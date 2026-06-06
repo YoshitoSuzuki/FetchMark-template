@@ -1,0 +1,33 @@
+name: Generate Index JSON
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+    paths:
+      - '**.md'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run generation script
+        run: python3 scripts/generate_index.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add index.json
+          git commit -m "Auto-generate index.json" || exit 0
+          git push
