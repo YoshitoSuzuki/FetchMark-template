@@ -27,6 +27,7 @@ GitHub Pagesなどで、`.md`ファイルをWeb上に公開してください。
 ## 3. 自動化ツールの利用
 
 [GitHub](https://github.com/YoshitoSuzuki/FetchMark-template)
+
 手動でJSONを作成する代わりに、Pythonスクリプトを使用できます。
 
 1. `scripts/` フォルダを自分のリポジトリにコピーします。
